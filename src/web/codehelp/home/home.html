@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width = device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title></title>
+    <link rel="stylesheet" href="../resource/css/common.css">
+    <link rel="stylesheet" href="../../../framework/vendor/swiper/css/swiper.css">
+</head>
+<body>
+<div class="code">
+
+    <div id="loading" class="loading" style="top:-120px">
+        <span class="outer"></span>
+    </div>
+
+
+    <script id="swiperTemplate" type="text/html">
+        <div class="swiper-container" style="height: {{swiper.height}}px">
+            <div class="swiper-wrapper">
+                {{each swiper.list}}
+                <div class="swiper-slide">
+                    <img src="{{$value.logo}}" width="{{swiper.width}}" height="{{swiper.height}}" />
+                </div>
+                {{/each}}
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+        </div>
+    </script>
+
+    <script id="dataTemplate" type="text/html">
+        <div class="panel">
+            <div class="hd"><h2>{{data.title}}</h2>
+                <div class="more"><a href="#"></a></div>
+            </div>
+            <ul class="list">
+                {{each data.list}}
+                <li class="activeable list-item" onclick="Home.openWindow('{{$value.ArticleId}}','{{$value.Title}}')">
+                    <img src="{{$value.icon}}" class="item-logo">
+
+                    <div class="item-desc">
+                        <h2 class="item-title">{{$value.Title}}</h2>
+
+                        <p class="item-info">
+                            <span class="item-left">{{$value.Summary}}</span><span class="item-right"></span>
+                        </p>
+
+                        <p class="item-time">{{$value.CreateDate}}</p>
+                    </div>
+                </li>
+                {{/each}}
+            </ul>
+        </div>
+    </script>
+
+    <div id="swiperPanel"></div>
+    <div id="recommendList"></div>
+    <div id="newList"></div>
+    <div id="hotList" style="padding-bottom: 120px;background-color: white"></div>
+</div>
+
+<script src="../../../framework/common/common.js"></script>
+<script src="../../../framework/artTemplate/art.js"></script>
+<script src="../../../framework/bridge/bridge.js"></script>
+<script src="../../../framework/vendor/swiper/js/swiper.js"></script>
+<script src="../resource/js/api.js"></script>
+<script src="src/web/codehelp/home/home.js" inline></script>
+
+</body>
+</html>
